@@ -1,24 +1,5 @@
 const config = require(`./config`);
-const ApiKeyAuthentication = {
-    description: `Please provide notion authentication`,
-    name: `Token`,
-    id: `key`,
-    fields: [
-        {
-            type: `password`,
-            name: `Integration Token`,
-            description: `Provide Notion API Integration Token`,
-            id: `key`,
-        },
-        {
-            type: `link`,
-            value: `https://www.notion.so/help/create-integrations-with-the-notion-api`,
-            description: `We need to have your Notion Integration Token to synchronize the data.`,
-            id: `key-link`,
-            name: `Read how to create integration, grant access and create token here...`,
-        },
-    ],
-};
+
 const OAuth2 = {
     id: 'oauth2',
     name: 'OAuth v2 Authentication',
@@ -33,9 +14,11 @@ const OAuth2 = {
     ],
 };
 
+/*
 const getAuthenticationStrategies = () => {
-    return [OAuth2, ApiKeyAuthentication];
+    return [OAuth2];
 };
+*/
 
 module.exports.connector = () => ({
     id: `notion-app`,
@@ -43,7 +26,7 @@ module.exports.connector = () => ({
     version: config.version,
     website: `https://notion.com`,
     description: `More than a doc. Or a table. Customize Notion to work the way you do.`,
-    authentication: getAuthenticationStrategies(),
+    authentication: [OAuth2],
     responsibleFor: {
         dataSynchronization: true,
     },
