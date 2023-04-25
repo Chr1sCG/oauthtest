@@ -24,7 +24,7 @@ module.exports.connector = () => ({
     id: `notion-app`,
     name: `Notion`,
     version: config.version,
-    website: `https://google.com`,
+    website: `https://notion.com`,
     description: `Connector description`,
     authentication: [OAuth2],
     responsibleFor: {
