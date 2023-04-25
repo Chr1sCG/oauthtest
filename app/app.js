@@ -56,14 +56,6 @@ module.exports = function () {
             res.status(401).json({message: `Unauthorized`});
         }
     });
-    app.post('/oauth2/v1/access_token', async (req, res) => {
-        try {
-            const tokens = await oauth.getAccessToken(req.body.code, req.body.fields.callback_uri);
-            res.json(tokens);
-        } catch (err) {
-            res.status(401).json({message: 'Unauthorized'});
-        }
-    });
     app.get(`/status`, statusRoute);
     return app;
 };
